@@ -1,0 +1,16 @@
+{
+  "name": "postcss-px-to-rem",
+  "description": "A CSS post-processor that converts px to rem.",
+  "version": "0.0.1",
+  "author": "njleonzhang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "index.js",
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "postcss": "^5.0.2"
+  }
+}
