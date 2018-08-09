@@ -53,6 +53,7 @@ function createPxReplace(viewportSize, minPixelValue, unitPrecision) {
     if (!$1) return m;
     var pixels = parseFloat($1);
     if (pixels <= minPixelValue) return m;
+    // because 1 rem is 10 percent of viewportSize, here multiply 10 to match
     return toFixed((pixels / viewportSize * 10), unitPrecision) + 'rem';
   };
 }
