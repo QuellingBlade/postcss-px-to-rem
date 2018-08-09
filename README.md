@@ -1,6 +1,8 @@
-# postcss-px-to-viewport
+# postcss-px-to-rem
 
 A plugin for [PostCSS](https://github.com/ai/postcss) that generates rem from pixel units.
+
+> refer to [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport)
 
 ## Usage
 
