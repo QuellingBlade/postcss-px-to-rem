@@ -5,7 +5,7 @@ var postcss = require('postcss');
 var pxToViewport = require('..');
 var css = fs.readFileSync('main.css', 'utf8');
 var options = {
-  viewportWidth: 1920
+  widthOfDesignLayout: 1920
 };
 var processedCss = postcss(pxToViewport(options)).process(css).css;
 

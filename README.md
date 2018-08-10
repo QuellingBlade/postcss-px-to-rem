@@ -4,6 +4,8 @@ A plugin for [PostCSS](https://github.com/ai/postcss) that generates rem from pi
 
 > refer to [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport)
 
+> use with [lib-flexible-for-dashboard](https://github.com/QuellingBlade/lib-flexible-for-dashboard) to develop flexible fullscreen dashbord.
+
 ## Usage
 
 If your project involves a fixed width, this script will help to convert pixels into rem.
@@ -97,19 +99,16 @@ Default:
 ```js
 {
   unitToConvert: 'px',
-  viewportWidth: 320,
+  widthOfDesignLayout: 1920,
   unitPrecision: 5,
-  viewportUnit: 'vw',
-  fontViewportUnit: 'vw',  // vmin is more suitable.
   selectorBlackList: [],
   minPixelValue: 1,
   mediaQuery: false
-}
+};
 ```
 - `unitToConvert` (String) unit to convert, by default, it is px.
-- `viewportWidth` (Number) The width of the viewport.
+- `widthOfDesignLayout` (Number) The width of the design layout. for pc dashboard, generally is 1920.
 - `unitPrecision` (Number) The decimal numbers to allow the REM units to grow to.
-- `viewportUnit` (String) Expected units.
 - `selectorBlackList` (Array) The selectors to ignore and leave as px.
     - If value is string, it checks to see if selector contains the string.
         - `['body']` will match `.body-class`
@@ -139,5 +138,3 @@ gulp.task('css', function () {
         .pipe(gulp.dest('build/css'));
 });
 ```
-
-> use with [lib-flexible-for-dashboard](https://github.com/QuellingBlade/lib-flexible-for-dashboard) to develop flexible fullscreen dashbord.

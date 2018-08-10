@@ -5,8 +5,7 @@ var objectAssign = require('object-assign');
 
 var defaults = {
   unitToConvert: 'px',
-  viewportWidth: 320,
-  viewportHeight: 568, // not now used; TODO: need for different units and math for different properties
+  widthOfDesignLayout: 1920,
   unitPrecision: 5,
   selectorBlackList: [],
   minPixelValue: 1,
@@ -18,8 +17,7 @@ var unit = 'rem'
 module.exports = postcss.plugin('postcss-px-to-rem', function (options) {
 
   var opts = objectAssign({}, defaults, options);
-  var pxReplace = createPxReplace(opts.viewportWidth, opts.minPixelValue, opts.unitPrecision);
-
+  var pxReplace = createPxReplace(opts.widthOfDesignLayout, opts.minPixelValue, opts.unitPrecision);
   // excluding regex trick: http://www.rexegg.com/regex-best-trick.html
   // Not anything inside double quotes
   // Not anything inside single quotes
@@ -36,7 +34,7 @@ module.exports = postcss.plugin('postcss-px-to-rem', function (options) {
 
       if (blacklistedSelector(opts.selectorBlackList, decl.parent.selector)) return;
 
-      decl.value = decl.value.replace(pxRegex, createPxReplace(opts.viewportWidth, opts.minPixelValue, opts.unitPrecision));
+      decl.value = decl.value.replace(pxRegex, createPxReplace(opts.widthOfDesignLayout, opts.minPixelValue, opts.unitPrecision));
     });
 
     if (opts.mediaQuery) {
@@ -48,13 +46,15 @@ module.exports = postcss.plugin('postcss-px-to-rem', function (options) {
   };
 });
 
-function createPxReplace(viewportSize, minPixelValue, unitPrecision) {
+function createPxReplace(widthOfDesignLayout, minPixelValue, unitPrecision) {
   return function (m, $1) {
     if (!$1) return m;
     var pixels = parseFloat($1);
     if (pixels <= minPixelValue) return m;
-    // because 1 rem is 10 percent of viewportSize, here multiply 10 to match
-    return toFixed((pixels / viewportSize * 10), unitPrecision) + 'rem';
+    // because 1 rem is 10 percent of viewportSize in
+    // https://github.com/QuellingBlade/lib-flexible-for-dashboard,
+    // here multiply 10 to match
+    return toFixed((pixels / widthOfDesignLayout * 10), unitPrecision) + 'rem';
   };
 }
 
