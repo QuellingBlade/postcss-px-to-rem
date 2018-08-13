@@ -1,7 +1,7 @@
 {
-  "name": "postcss-px-to-rem",
+  "name": "@njleonzhang/postcss-px-to-rem",
   "description": "A CSS post-processor that converts px to rem.",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "author": "njleonzhang",
   "license": "MIT",
   "repository": {
