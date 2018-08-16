@@ -8,8 +8,10 @@ A plugin for [PostCSS](https://github.com/ai/postcss) that generates rem from pi
 
 ## demo
 https://quellingblade.github.io/postcss-px-to-rem/
+
 http://www.njleonzhang.com/flexible-pc-full-screen/
-change your browser window to try.
+
+> change the size of your browser window to try.
 
 ## Usage
 
